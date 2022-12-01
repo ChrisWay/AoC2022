@@ -2,11 +2,11 @@
 
 public class Day01 : BaseDay
 {
-    private readonly string _input;
+    private readonly string[] _input;
 
     public Day01()
     {
-        _input = File.ReadAllText(InputFilePath);
+        _input = File.ReadAllLines(InputFilePath);
     }
 
     public override ValueTask<string> Solve_1()
@@ -30,11 +30,10 @@ public class Day01 : BaseDay
 
     List<int> GetTotals()
     {
-        var lines = _input.Split(Environment.NewLine, StringSplitOptions.None);
-        var totals = new List<int>();
+        var totals = new List<int>(250);
         int runningTotal = 0;
 
-        foreach (var line in lines)
+        foreach (var line in _input)
         {
             if (string.IsNullOrEmpty(line))
             {
